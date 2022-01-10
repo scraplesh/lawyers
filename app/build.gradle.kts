@@ -46,6 +46,8 @@ dependencies {
     implementation(libs.compose.runtime)
     implementation(libs.compose.ui.core)
     implementation(libs.compose.ui.tooling)
+    implementation(libs.google.accompanist.indicators)
+    implementation(libs.google.accompanist.pager)
     implementation(libs.google.material)
     implementation(libs.lifecycle.runtime)
     implementation(project(Shared.uikit))

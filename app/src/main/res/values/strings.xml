@@ -1,0 +1,23 @@
+<resources>
+    <string name="greeting_title">Welcome</string>
+    <string name="greeting_subtitle">Hello! We glad to see you!</string>
+    <string name="sign_in_label">Sign in</string>
+    <string name="sign_up_label">Sign up</string>
+    <string name="choose_language_label">Choose language</string>
+    <string name="password_recovery_title">Password recovery</string>
+    <string name="password_recovery_subtitle">A link to reset your password will be sent to your email.</string>
+    <string name="recover_label">Recover</string>
+    <string name="email_label">Email</string>
+    <string name="enter_your_email_hint">Enter your email</string>
+    <string name="password_label">Password</string>
+    <string name="enter_your_password_hint">Enter your password</string>
+    <string name="forgot_your_password_message">Forgot your password?</string>
+    <string name="or_sign_in_via">Or sign in via</string>
+    <string name="you_label">You</string>
+    <string name="client_label">Client</string>
+    <string name="professional_label">Professional</string>
+    <string name="name_label">Name</string>
+    <string name="enter_your_name_hint">Enter your name</string>
+    <string name="phone_number_label">Phone number</string>
+    <string name="enter_your_phone_number_hint">Enter your phone number</string>
+</resources>
