@@ -13,4 +13,5 @@ enableFeaturePreview("VERSION_CATALOGS")
 include(
     ":app",
     ":shared:uikit",
+    ":features:greeting",
 )

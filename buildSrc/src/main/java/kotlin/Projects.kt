@@ -8,4 +8,6 @@ object Shared {
 
 object Features {
     private const val prefix = ":features"
+
+    const val greeting = "$prefix:greeting"
 }

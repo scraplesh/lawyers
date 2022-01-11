@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="greeting_title">Welcome</string>
+    <string name="greeting_subtitle">Hello! We glad to see you!</string>
+    <string name="greeting_sign_in_label">Sign in</string>
+    <string name="greeting_choose_language_label">Choose language</string>
+</resources>
