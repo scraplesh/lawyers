@@ -3,6 +3,16 @@ plugins {
     id("kotlin-android")
 }
 
+android {
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.compose
+    }
+}
+
 dependencies {
     implementation(libs.compose.foundation.core)
     implementation(libs.compose.material.core)
