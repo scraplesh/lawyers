@@ -17,4 +17,6 @@ dependencies {
     implementation(libs.compose.foundation.core)
     implementation(libs.compose.material.core)
     implementation(libs.compose.ui.core)
+    implementation(libs.compose.ui.tooling)
+    implementation(project(Shared.uikit))
 }

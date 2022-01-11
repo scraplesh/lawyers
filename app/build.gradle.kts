@@ -17,7 +17,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.0.5"
+        kotlinCompilerExtensionVersion = Versions.compose
     }
 
     signingConfigs {
@@ -50,5 +50,6 @@ dependencies {
     implementation(libs.google.accompanist.pager)
     implementation(libs.google.material)
     implementation(libs.lifecycle.runtime)
+    implementation(project(Features.greeting))
     implementation(project(Shared.uikit))
 }
