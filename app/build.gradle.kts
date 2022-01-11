@@ -48,5 +48,6 @@ dependencies {
     implementation(libs.compose.ui.tooling)
     implementation(libs.google.material)
     implementation(libs.lifecycle.runtime)
+    implementation(project(Features.greeting))
     implementation(project(Shared.uikit))
 }
