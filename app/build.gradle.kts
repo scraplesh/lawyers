@@ -50,6 +50,8 @@ dependencies {
     implementation(libs.google.accompanist.pager)
     implementation(libs.google.material)
     implementation(libs.lifecycle.runtime)
+    implementation(project(Features.authorization))
     implementation(project(Features.greeting))
+    implementation(project(Features.passwordrecovery))
     implementation(project(Shared.uikit))
 }
