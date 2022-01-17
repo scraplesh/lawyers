@@ -4,6 +4,7 @@
 .idea/modules
 .idea/shelf
 .idea/*.xml
+.idea/.name
 *.iml
 
 build

@@ -34,7 +34,7 @@ import me.scraplesh.lawyers.ui.theme.Shapes
 import me.scraplesh.lawyers.ui.theme.TextWhite
 
 @Composable
-fun Greeting() {
+fun Greeting(openAuthorization: (() -> Unit)?) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -74,7 +74,7 @@ fun Greeting() {
                     style = MaterialTheme.typography.body1
                 )
                 Button(
-                    onClick = {},
+                    onClick = { openAuthorization?.invoke() },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp),
@@ -110,9 +110,11 @@ fun Greeting() {
                             .align(Alignment.CenterVertically),
                         style = MaterialTheme.typography.body1
                     )
-                    Box(modifier = Modifier
-                        .fillMaxWidth()
-                        .align(Alignment.CenterVertically)) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .align(Alignment.CenterVertically)
+                    ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_arrow_right),
                             modifier = Modifier.align(Alignment.CenterEnd),
@@ -130,6 +132,6 @@ fun Greeting() {
 @Composable
 fun GreetingPreview() {
     LawyersTheme {
-        Greeting()
+        Greeting(null)
     }
 }

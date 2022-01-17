@@ -1,10 +1,38 @@
 package me.scraplesh.lawyers.features.authorization
 
-import androidx.compose.foundation.*
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.*
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Divider
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.ScrollableTabRow
+import androidx.compose.material.Tab
+import androidx.compose.material.TabRowDefaults
+import androidx.compose.material.Text
+import androidx.compose.material.TextButton
+import androidx.compose.material.TextField
+import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,20 +54,23 @@ import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.launch
 import me.scraplesh.lawyers.ui.theme.BackgroundGrey
-import me.scraplesh.lawyers.ui.theme.LawyersTheme
-import me.scraplesh.lawyers.ui.theme.PrimaryDarkBlue
-import me.scraplesh.lawyers.ui.theme.TextGrey
 import me.scraplesh.lawyers.ui.theme.ButtonBackgroundFb
 import me.scraplesh.lawyers.ui.theme.ButtonBackgroundVk
 import me.scraplesh.lawyers.ui.theme.ButtonBorderGoogle
+import me.scraplesh.lawyers.ui.theme.LawyersTheme
+import me.scraplesh.lawyers.ui.theme.PrimaryDarkBlue
 import me.scraplesh.lawyers.ui.theme.PrimaryLightBlue
 import me.scraplesh.lawyers.ui.theme.Shapes
 import me.scraplesh.lawyers.ui.theme.TextBlack
+import me.scraplesh.lawyers.ui.theme.TextGrey
 import me.scraplesh.lawyers.ui.theme.TextWhite
 
 @ExperimentalPagerApi
 @Composable
-fun Authorization() {
+fun Authorization(
+    navigateBack: (() -> Unit)? = null,
+    openPasswordRecovery: (() -> Unit)? = null
+) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -60,7 +91,7 @@ fun Authorization() {
                     }
                 },
                 navigationIcon = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = { navigateBack?.invoke() }) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_arrow_left),
                             contentDescription = "",
@@ -126,7 +157,7 @@ fun Authorization() {
                 }
                 HorizontalPager(count = pages.size, state = pagerState) { index ->
                     when (index) {
-                        0 -> SignIn()
+                        0 -> SignIn(openPasswordRecovery)
                         1 -> SignUp()
                     }
                 }
@@ -136,7 +167,7 @@ fun Authorization() {
 }
 
 @Composable
-fun SignIn() {
+fun SignIn(openPasswordRecovery: (() -> Unit)? = null) {
     val contentScrollState = rememberScrollState()
     Column(
         modifier = Modifier
@@ -227,12 +258,16 @@ fun SignIn() {
                 unfocusedIndicatorColor = Color.Transparent
             )
         )
-        Text(
-            text = stringResource(R.string.authorization_forgot_your_password_message),
-            modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp),
-            style = MaterialTheme.typography.body1,
-            color = PrimaryLightBlue
-        )
+        TextButton(
+            onClick = { openPasswordRecovery?.invoke() },
+            modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp)
+        ) {
+            Text(
+                text = stringResource(R.string.authorization_forgot_your_password_message),
+                style = MaterialTheme.typography.body1,
+                color = PrimaryLightBlue
+            )
+        }
         Button(
             onClick = {},
             modifier = Modifier

@@ -1,8 +1,24 @@
 package me.scraplesh.lawyers.features.passwordrecovery
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.*
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
+import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -14,10 +30,15 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import me.scraplesh.lawyers.ui.theme.*
+import me.scraplesh.lawyers.ui.theme.BackgroundGrey
+import me.scraplesh.lawyers.ui.theme.LawyersTheme
+import me.scraplesh.lawyers.ui.theme.PrimaryDarkBlue
+import me.scraplesh.lawyers.ui.theme.Shapes
+import me.scraplesh.lawyers.ui.theme.TextGrey
+import me.scraplesh.lawyers.ui.theme.TextWhite
 
 @Composable
-fun PasswordRecovery() {
+fun PasswordRecovery(navigateBack: (() -> Unit)? = null) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -38,7 +59,7 @@ fun PasswordRecovery() {
                     }
                 },
                 navigationIcon = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = { navigateBack?.invoke() }) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_arrow_left),
                             contentDescription = "",
