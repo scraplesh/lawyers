@@ -1,10 +1,6 @@
 .gradle
 
-.idea/libraries
-.idea/modules
-.idea/shelf
-.idea/*.xml
-.idea/.name
+.idea
 *.iml
 
 build
