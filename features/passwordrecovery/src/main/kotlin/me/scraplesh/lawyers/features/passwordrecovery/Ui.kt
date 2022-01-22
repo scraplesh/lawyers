@@ -1,40 +1,44 @@
-package me.scraplesh.lawyers.features.greeting
+package me.scraplesh.lawyers.features.passwordrecovery
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import me.scraplesh.lawyers.ui.theme.BackgroundGrey
 import me.scraplesh.lawyers.ui.theme.LawyersTheme
 import me.scraplesh.lawyers.ui.theme.PrimaryDarkBlue
 import me.scraplesh.lawyers.ui.theme.Shapes
+import me.scraplesh.lawyers.ui.theme.TextGrey
 import me.scraplesh.lawyers.ui.theme.TextWhite
 
 @Composable
-fun Greeting(openAuthorization: (() -> Unit)?) {
+fun PasswordRecovery(navigateBack: (() -> Unit)? = null) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -46,9 +50,18 @@ fun Greeting(openAuthorization: (() -> Unit)?) {
                         Icon(
                             painter = painterResource(R.drawable.ic_logo),
                             modifier = Modifier
-                                .padding(end = 16.dp)
+                                .padding(end = 64.dp)
                                 .height(48.dp)
                                 .width(48.dp),
+                            contentDescription = "",
+                            tint = Color.Unspecified
+                        )
+                    }
+                },
+                navigationIcon = {
+                    IconButton(onClick = { navigateBack?.invoke() }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_arrow_left),
                             contentDescription = "",
                             tint = Color.Unspecified
                         )
@@ -64,64 +77,57 @@ fun Greeting(openAuthorization: (() -> Unit)?) {
                 modifier = Modifier.fillMaxSize()
             ) {
                 Text(
-                    text = stringResource(R.string.greeting_title),
+                    text = stringResource(R.string.password_recovery_title),
                     modifier = Modifier.padding(start = 16.dp, top = 64.dp, end = 16.dp),
                     style = MaterialTheme.typography.h1
                 )
                 Text(
-                    text = stringResource(R.string.greeting_subtitle),
+                    text = stringResource(R.string.password_recovery_subtitle),
                     modifier = Modifier.padding(start = 16.dp, end = 16.dp),
                     style = MaterialTheme.typography.body1
                 )
-                Button(
-                    onClick = { openAuthorization?.invoke() },
+                Text(
+                    text = stringResource(R.string.password_recovery_email_label),
+                    modifier = Modifier.padding(start = 16.dp, top = 24.dp, end = 16.dp),
+                    style = MaterialTheme.typography.body1
+                )
+                val emailTextState = remember { mutableStateOf(TextFieldValue()) }
+                TextField(
+                    value = emailTextState.value,
+                    onValueChange = { emailTextState.value = it },
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
+                        .padding(start = 16.dp, top = 10.dp, end = 16.dp)
+                        .fillMaxWidth(),
+                    placeholder = {
+                        Text(
+                            text = stringResource(R.string.password_recovery_enter_your_email_hint),
+                            color = TextGrey,
+                            style = MaterialTheme.typography.body1
+                        )
+                    },
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+                    maxLines = 1,
+                    textStyle = MaterialTheme.typography.body1,
+                    shape = Shapes.large,
+                    colors = TextFieldDefaults.textFieldColors(
+                        backgroundColor = BackgroundGrey,
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent
+                    )
+                )
+                Button(
+                    onClick = {},
+                    modifier = Modifier
+                        .padding(start = 16.dp, top = 24.dp, end = 16.dp)
+                        .fillMaxWidth(),
                     shape = Shapes.large,
                     colors = ButtonDefaults.buttonColors(backgroundColor = PrimaryDarkBlue)
                 ) {
                     Text(
-                        text = stringResource(R.string.greeting_sign_in_label),
+                        text = stringResource(R.string.password_recovery_recover_label),
                         style = MaterialTheme.typography.button,
                         color = TextWhite
                     )
-                }
-                Row(modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-                    .clickable {}) {
-                    Box(
-                        modifier = Modifier
-                            .size(42.dp)
-                            .background(color = BackgroundGrey, shape = Shapes.large)
-                    ) {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_global),
-                            modifier = Modifier.align(Alignment.Center),
-                            contentDescription = "",
-                            tint = Color.Unspecified
-                        )
-                    }
-                    Text(
-                        text = stringResource(R.string.greeting_choose_language_label),
-                        modifier = Modifier
-                            .padding(start = 16.dp, end = 16.dp)
-                            .align(Alignment.CenterVertically),
-                        style = MaterialTheme.typography.body1
-                    )
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .align(Alignment.CenterVertically)
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_arrow_right),
-                            modifier = Modifier.align(Alignment.CenterEnd),
-                            contentDescription = "",
-                            tint = Color.Unspecified
-                        )
-                    }
                 }
             }
         }
@@ -130,8 +136,8 @@ fun Greeting(openAuthorization: (() -> Unit)?) {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun PasswordRecoveryPreview() {
     LawyersTheme {
-        Greeting(null)
+        PasswordRecovery()
     }
 }

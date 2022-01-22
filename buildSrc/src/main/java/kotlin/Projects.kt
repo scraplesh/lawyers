@@ -9,5 +9,7 @@ object Shared {
 object Features {
     private const val prefix = ":features"
 
+    const val authorization = "$prefix:authorization"
     const val greeting = "$prefix:greeting"
+    const val passwordrecovery = "$prefix:passwordrecovery"
 }

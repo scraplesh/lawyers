@@ -13,5 +13,7 @@ enableFeaturePreview("VERSION_CATALOGS")
 include(
     ":app",
     ":shared:uikit",
+    ":features:authorization",
     ":features:greeting",
+    ":features:passwordrecovery",
 )
